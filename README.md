@@ -15,9 +15,13 @@ Data Understanding:
 Data Preparation:
  Combine multiple files into a single Dataframe. Remove unnecessary columns and add others to account for formatting differences. Convert datatypes, mostly converting the Demand and Generation columns from strings to floats, though the 'UTC Time at End of Hour' obviously needed to be converted to Datetime.
 
-Modeling:
- RNN using Time Series for Logistic Regression
+Modeling & Evaluation:
+ Created a baseline ARIMA model by shifting Demand Values by a time period of 1 to the previous hour. The baseline model has an RMSE of 66.89 RMSE. 
+ I then ran 2 more ARIMA models after imputing missing Demand values of 0 and the Mean Demand. 
+ These models returned an RMSE of 220.34 and 371.22 respectively, compared to a 66.89 RMSE for the baseline model. This discrepancy (baseline outperforming other models) is likely due to issues arriving from the imputation of missing data which skewed the numbers.
 
-Evaluation:
-
-Deployment:
+Next Steps and Future Work:
+  Deploy an RNN for modeling
+  Use more accurate imputation for missing data such as using a moving average
+  Factor in external data such as regional climate and population growth
+  Examine regional data individually instead of nationwide data as a whole
